@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/NukeGeng/KORDRA",
+  "revision": "63a7951f48b4441e880defaf315c3755ff79842b",
+  "apiStatus": "not-approved",
+  "inventoryAccess": "denied",
+  "contractPaths": [
+    "docs/contracts/permissions.md",
+    "docs/features/infrastructure-inventory/features/register-target.md",
+    "docs/decisions/0003-tenant-authorization.md",
+    "docs/decisions/0010-local-readonly-bootstrap.md"
+  ]
+}

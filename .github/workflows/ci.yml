@@ -1,0 +1,21 @@
+name: Clients repository validation
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  repository-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test standalone repository boundaries
+        run: python3 -m unittest discover -s tests -v
+      - name: Validate scaffold and Product reference
+        run: python3 tools/check_repository.py
+      - name: Check whitespace
+        run: git diff --check

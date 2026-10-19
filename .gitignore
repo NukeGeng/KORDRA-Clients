@@ -1,0 +1,14 @@
+.DS_Store
+.amr-local/
+.temp/
+__pycache__/
+*.pyc
+node_modules/
+dist/
+coverage/
+playwright-report/
+test-results/
+.env
+.env.*
+!.env.example
+*.log
