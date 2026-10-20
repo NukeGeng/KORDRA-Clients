@@ -4,11 +4,11 @@ Independent frontend repository mounted at `KORDRA/clients` as a Git submodule. 
 
 ## Current scope
 
-This bootstrap preserves the existing reserved `web/`, `desktop/`, `packages/ui/` and `packages/api-client/` directories. There is no frontend application, package manager, Vue/Tauri adoption, login, browser build or live API integration yet. Those require an approved feature and relevant technology/contracts. Scaffold CI is not application test evidence. The separate marketing Website repository is not migrated here.
+This repository preserves the reserved `web/`, `desktop/`, `packages/ui/` and `packages/api-client/` directories. There is no operational Vue/Tauri client, login or live Product API integration; those require their own approved feature and contracts. The public marketing website is an approved Clients responsibility under [`website/`](website/README.md), tracked by [FEAT-CLIENTS-WEBSITE-001](docs/features/website.md). It is a WordPress Block Theme and remains separate from Product backend and authorization. Scaffold CI alone is not application test evidence.
 
 ## Work independently
 
-Open `/Users/dangvyhao/Documents/KORDRA/clients` as the frontend session's workspace. Read [AGENTS](AGENTS.md), [WORKFLOW](WORKFLOW.md) and the [bootstrap feature](docs/features/repository-bootstrap.md). Do not operate from the Product root or modify its checkpoints/services.
+Open `/Users/dangvyhao/Documents/KORDRA/clients` as the frontend session's workspace. Read [AGENTS](AGENTS.md), [WORKFLOW](WORKFLOW.md), the [bootstrap feature](docs/features/repository-bootstrap.md), and the active feature document. Website work is governed by [FEAT-CLIENTS-WEBSITE-001](docs/features/website.md). Do not operate from the Product root or modify its checkpoints/services.
 
 ```sh
 git fetch origin
@@ -25,6 +25,6 @@ Create scoped frontend PRs. Once the human maintainer merges a revision, Product
 
 [Product reference](contracts/product-reference.json) records the reviewed Product baseline. Inventory ingress at that baseline is denied; no positive frontend API/login is approved. Mock UI uses synthetic fixtures with explicit mock status. Keep backend permission decisions on the server and never bundle database credentials, tokens or company infrastructure data.
 
-Follow AMR v4: Luna Max develops and tests; Sol has bounded design/debugging roles; Codex Auto PR Review is the default PR reviewer when configured. One review by default, maximum three rounds per PR; incremental follow-ups, canonical findings and no repeated unchanged-revision review. No independent local AI review or automatic Sol review. Human approval controls design and merge. Connector access and automatic Code Review must be verified separately for this repository; CI does not configure the provider.
+Follow AMR v4: Luna Max develops and tests; Sol has bounded design/debugging roles; Codex Auto PR Review is the default PR reviewer when configured. One review by default, maximum three rounds per PR; incremental follow-ups, canonical findings and no repeated unchanged-revision review. No independent local AI review or automatic Sol review. Human approval controls design and merge. Connector access and automatic Code Review must be verified separately for this repository; CI does not configure the provider. Website local previews and its Docker Compose services are development-only; never modify the live WordPress site without a separate explicit authorization.
 
 Public repository availability is not a license decision or an OSS release-readiness claim; licensing remains with the owner.

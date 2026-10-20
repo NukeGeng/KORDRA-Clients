@@ -1,0 +1,30 @@
+<!-- wp:template-part {"slug":"header","theme":"kordra","tagName":"header"} /-->
+<!-- wp:group {"tagName":"main","anchor":"kordra-main","className":"kordra-main kordra-reading","layout":{"type":"constrained"}} -->
+<main id="kordra-main" class="wp-block-group kordra-main kordra-reading">
+	<!-- wp:query-title {"type":"archive","showPrefix":false,"className":"kordra-page__title"} /-->
+	<!-- wp:query {"queryId":0,"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true},"displayLayout":{"type":"list"}} -->
+	<div class="wp-block-query">
+		<!-- wp:post-template -->
+			<!-- wp:group {"className":"kordra-post-row","layout":{"type":"constrained"}} -->
+			<div class="wp-block-group kordra-post-row">
+				<!-- wp:post-date {"className":"kordra-post-row__date"} /-->
+				<!-- wp:post-title {"isLink":true,"level":2,"className":"kordra-post-row__title"} /-->
+				<!-- wp:post-excerpt {"moreText":"Read update","excerptLength":26} /-->
+			</div>
+			<!-- /wp:group -->
+		<!-- /wp:post-template -->
+		<!-- wp:query-no-results -->
+			<!-- wp:paragraph {"className":"kordra-empty-state"} -->
+			<p class="kordra-empty-state">No updates are published yet. Follow the public repository for current development activity.</p>
+			<!-- /wp:paragraph -->
+		<!-- /wp:query-no-results -->
+		<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"space-between"}} -->
+			<!-- wp:query-pagination-previous /-->
+			<!-- wp:query-pagination-numbers /-->
+			<!-- wp:query-pagination-next /-->
+		<!-- /wp:query-pagination -->
+	</div>
+	<!-- /wp:query -->
+</main>
+<!-- /wp:group -->
+<!-- wp:template-part {"slug":"footer","theme":"kordra","tagName":"footer"} /-->

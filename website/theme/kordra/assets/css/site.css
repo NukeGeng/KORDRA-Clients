@@ -1,0 +1,943 @@
+:root {
+	--kordra-ink: #0b0d0f;
+	--kordra-surface: #101317;
+	--kordra-paper: #f3f2ed;
+	--kordra-muted: #b3bbc1;
+	--kordra-line: #33393e;
+	--kordra-soft-line: #23282c;
+	--kordra-content: 1320px;
+	--kordra-gutter: clamp(1.25rem, 6vw, 6.25rem);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	background: var(--kordra-ink);
+	color-scheme: dark;
+	scroll-behavior: smooth;
+	scroll-padding-top: 1rem;
+}
+
+body {
+	margin: 0;
+	background: var(--kordra-ink);
+	color: var(--kordra-paper);
+	font-family: var(--wp--preset--font-family--ibm-plex-sans), sans-serif;
+	font-size: 1rem;
+	line-height: 1.6;
+}
+
+::selection {
+	background: #d5e4ea;
+	color: #081015;
+}
+
+a {
+	color: inherit;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.22em;
+}
+
+a:hover {
+	color: var(--kordra-paper);
+}
+
+a:focus-visible,
+button:focus-visible,
+.wp-block-navigation__responsive-container-open:focus-visible,
+.wp-block-navigation__responsive-container-close:focus-visible {
+	outline: 2px solid var(--kordra-paper);
+	outline-offset: 4px;
+}
+
+button,
+.wp-block-button__link,
+.wp-block-navigation__responsive-container-open,
+.wp-block-navigation__responsive-container-close {
+	font: inherit;
+}
+
+img,
+svg {
+	max-width: 100%;
+}
+
+.wp-site-blocks {
+	overflow: clip;
+}
+
+.kordra-skip-link {
+	position: absolute;
+	z-index: 1000;
+	top: -5rem;
+	left: 1rem;
+	padding: 0.75rem 1rem;
+	background: var(--kordra-paper);
+	color: var(--kordra-ink);
+	font-size: 1rem;
+}
+
+.kordra-skip-link:focus {
+	top: 1rem;
+}
+
+.kordra-header {
+	position: relative;
+	z-index: 10;
+	border-bottom: 1px solid var(--kordra-line);
+	background: #0e1012;
+}
+
+.kordra-header__inner {
+	min-height: 5.25rem;
+	gap: clamp(1rem, 2vw, 2.5rem);
+	padding: 0 clamp(1.25rem, 4.2vw, 4.5rem);
+}
+
+.kordra-brand {
+	flex: 0 0 auto;
+	align-items: center;
+	gap: 0.9rem;
+}
+
+.kordra-brand__mark,
+.kordra-brand__mark svg {
+	width: 1.75rem;
+	height: 1.75rem;
+	display: block;
+	flex: 0 0 auto;
+}
+
+.kordra-brand__title {
+	margin: 0;
+	font-size: 1.05rem;
+	font-weight: 700;
+	letter-spacing: 0.055em;
+}
+
+.kordra-brand__title a {
+	text-decoration: none;
+}
+
+.kordra-brand__descriptor {
+	margin: 0;
+	border-left: 1px solid #4b545a;
+	padding-left: 0.9rem;
+	color: var(--kordra-muted);
+	font-family: var(--wp--preset--font-family--ibm-plex-mono), monospace;
+	font-size: 0.75rem;
+	letter-spacing: 0.1em;
+}
+
+.kordra-navigation {
+	font-size: 0.875rem;
+}
+
+.kordra-navigation .wp-block-navigation__container {
+	gap: clamp(0.75rem, 2.6vw, 2.6rem);
+}
+
+.kordra-navigation .wp-block-navigation-item__content {
+	min-height: 2.75rem;
+	display: inline-flex;
+	align-items: center;
+	color: #c0c4c7;
+	text-decoration: none;
+}
+
+.kordra-navigation .wp-block-navigation-item__content:hover {
+	color: var(--kordra-paper);
+}
+
+.kordra-header__actions {
+	flex: 0 0 auto;
+	margin: 0;
+}
+
+.kordra-github-link .wp-block-button__link {
+	min-height: 2.75rem;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.55rem;
+	border: 1px solid transparent;
+	border-radius: 0;
+	padding: 0.55rem 0.7rem;
+	background: transparent;
+	color: var(--kordra-paper);
+	font-size: 0.875rem;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.kordra-github-link .wp-block-button__link:hover {
+	border-color: var(--kordra-line);
+}
+
+.kordra-art-hero {
+	position: relative;
+	background: #060708;
+	overflow: hidden;
+}
+
+.kordra-art-hero__image {
+	height: clamp(24rem, 50vw, 43.125rem);
+	max-height: 43.125rem;
+	border-bottom: 1px solid #535558;
+}
+
+.kordra-art-hero__image picture,
+.kordra-art-hero__image img {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.kordra-art-hero__image img {
+	object-fit: cover;
+	object-position: center 51%;
+}
+
+.kordra-art-hero__edge {
+	position: absolute;
+	top: 2rem;
+	margin: 0;
+	color: #cbd1d0;
+	font-family: var(--wp--preset--font-family--ibm-plex-mono), monospace;
+	font-size: 0.75rem;
+	letter-spacing: 0.12em;
+	line-height: 1.3;
+	opacity: 0.82;
+	writing-mode: vertical-rl;
+}
+
+.kordra-art-hero__edge--left {
+	left: 1.25rem;
+	transform: rotate(180deg);
+}
+
+.kordra-art-hero__edge--right {
+	right: 1.25rem;
+}
+
+.kordra-art-hero__status {
+	min-height: 4.375rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	border-bottom: 1px solid var(--kordra-line);
+	padding: 0.75rem clamp(1.25rem, 4.2vw, 4.5rem);
+	color: var(--kordra-muted);
+	font-family: var(--wp--preset--font-family--ibm-plex-mono), monospace;
+	font-size: 0.75rem;
+	letter-spacing: 0.09em;
+}
+
+.kordra-art-hero__status p {
+	display: flex;
+	align-items: center;
+	gap: 0.7rem;
+	margin: 0;
+}
+
+.kordra-status-dot {
+	width: 0.5rem;
+	height: 0.5rem;
+	flex: 0 0 auto;
+	border: 1px solid #c3cbd1;
+	border-radius: 50%;
+	background: #dce5e8;
+}
+
+.kordra-section {
+	border-bottom: 1px solid var(--kordra-line);
+	padding: clamp(4.5rem, 8vw, 7rem) var(--kordra-gutter);
+}
+
+.kordra-section__inner,
+.kordra-header__inner,
+.kordra-footer__inner {
+	width: min(100%, var(--kordra-content));
+	margin-inline: auto;
+}
+
+.kordra-statement {
+	padding-top: clamp(5rem, 8vw, 7rem);
+	padding-bottom: clamp(5rem, 9vw, 7.5rem);
+}
+
+.kordra-statement__inner {
+	display: grid;
+	grid-template-columns: minmax(0, 1.35fr) minmax(17rem, 0.65fr);
+	align-items: center;
+	gap: clamp(2.5rem, 7vw, 7rem);
+}
+
+.kordra-statement__main,
+.kordra-statement__side {
+	min-width: 0;
+}
+
+.kordra-display {
+	margin: 0;
+	font-size: clamp(3rem, 6.4vw, 6rem);
+	font-weight: 700;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+}
+
+.kordra-display em {
+	color: #8f989e;
+	font-style: normal;
+	font-weight: 400;
+}
+
+.kordra-statement__side {
+	max-width: 23rem;
+	padding-top: 1.5rem;
+}
+
+.kordra-statement__positioning {
+	margin: 0 0 1.25rem;
+	font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	line-height: 1.25;
+}
+
+.kordra-statement__copy,
+.kordra-topology__copy > p:not(.kordra-text-link),
+.kordra-status__details > p {
+	max-width: 42rem;
+	color: var(--kordra-muted);
+	font-size: 1rem;
+	line-height: 1.75;
+}
+
+.kordra-text-link {
+	margin: 2rem 0 0;
+}
+
+.kordra-text-link a {
+	min-height: 2.75rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.75rem;
+	border-bottom: 1px solid #7d878e;
+	padding: 0.4rem 0 0.6rem;
+	font-size: 0.875rem;
+	font-weight: 600;
+	letter-spacing: 0.025em;
+	text-decoration: none;
+}
+
+.kordra-text-link a:hover {
+	border-color: var(--kordra-paper);
+}
+
+.kordra-flow {
+	padding-top: clamp(5rem, 8vw, 7rem);
+	padding-bottom: clamp(4.5rem, 7vw, 6rem);
+}
+
+.kordra-flow__heading {
+	display: flex;
+	align-items: end;
+	justify-content: space-between;
+	gap: 2rem;
+}
+
+.kordra-flow__heading h2,
+.kordra-topology__copy h2 {
+	margin: 0;
+	font-size: clamp(2rem, 3.7vw, 3.5rem);
+	font-weight: 700;
+	letter-spacing: -0.03em;
+	line-height: 1.16;
+}
+
+.kordra-flow__heading h2 span {
+	color: #a1a9ae;
+}
+
+.kordra-flow__heading > p {
+	max-width: 19rem;
+	margin: 0 0 0.25rem;
+	color: var(--kordra-muted);
+	font-size: 0.9375rem;
+	line-height: 1.7;
+}
+
+.kordra-flow__list {
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+	gap: 0;
+	margin: 6rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.kordra-flow__list::before {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	height: 1px;
+	background: #697379;
+	content: "";
+}
+
+.kordra-flow__list li {
+	position: relative;
+	min-width: 0;
+	padding: 2.25rem 1.25rem 0 0;
+}
+
+.kordra-flow__list li::before {
+	position: absolute;
+	top: -0.4375rem;
+	left: 0;
+	width: 0.875rem;
+	height: 0.875rem;
+	border: 1px solid #a9b3ba;
+	border-radius: 50%;
+	background: var(--kordra-ink);
+	content: "";
+}
+
+.kordra-flow__list li:first-child::before {
+	outline: 1px solid #59636a;
+	outline-offset: 4px;
+}
+
+.kordra-flow__list li > span {
+	font-size: 0.875rem;
+	font-weight: 600;
+	letter-spacing: 0.07em;
+}
+
+.kordra-flow__list li > p {
+	max-width: 13rem;
+	margin: 0.6rem 0 0;
+	color: var(--kordra-muted);
+	font-size: 0.875rem;
+	line-height: 1.6;
+}
+
+.kordra-section-note {
+	margin: 3.5rem 0 0;
+	color: #9aa3a9;
+	font-family: var(--wp--preset--font-family--ibm-plex-mono), monospace;
+	font-size: 0.75rem;
+	letter-spacing: 0.08em;
+}
+
+.kordra-topology__inner {
+	display: grid;
+	grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+	align-items: center;
+	gap: clamp(2rem, 7vw, 7rem);
+}
+
+.kordra-topology__copy > p:not(.kordra-text-link) {
+	margin: 1.5rem 0 0;
+}
+
+.kordra-orbit-map {
+	min-width: 0;
+	margin: 0;
+	border: 1px solid var(--kordra-line);
+	padding: clamp(1rem, 2vw, 1.5rem);
+	background: var(--kordra-surface);
+}
+
+.kordra-orbit-map svg {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.kordra-orbit-map__labels {
+	fill: #c1c5c8;
+	font-family: var(--wp--preset--font-family--ibm-plex-mono), monospace;
+	font-size: 11px;
+	letter-spacing: 1.5px;
+}
+
+.kordra-orbit-map figcaption {
+	margin-top: 0.75rem;
+	color: #a6afb4;
+	font-family: var(--wp--preset--font-family--ibm-plex-mono), monospace;
+	font-size: 0.75rem;
+	letter-spacing: 0.06em;
+}
+
+.kordra-status {
+	padding-top: clamp(4.5rem, 7vw, 6.5rem);
+	padding-bottom: clamp(4.5rem, 7vw, 6.5rem);
+}
+
+.kordra-status__inner {
+	display: grid;
+	grid-template-columns: minmax(0, 1.25fr) minmax(17rem, 0.75fr);
+	align-items: center;
+	gap: clamp(2rem, 6vw, 6rem);
+}
+
+.kordra-status__heading {
+	margin: 0;
+	font-size: clamp(1.8rem, 3.15vw, 3rem);
+	font-weight: 700;
+	letter-spacing: -0.025em;
+	line-height: 1.28;
+}
+
+.kordra-status__heading span {
+	color: #8f989e;
+}
+
+.kordra-status__details > p {
+	margin: 0;
+}
+
+.kordra-status__details .wp-block-buttons {
+	margin-top: 1.25rem;
+}
+
+.kordra-status__details .wp-block-button__link,
+.kordra-error .wp-block-button__link {
+	min-height: 3rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+	border: 1px solid var(--kordra-paper);
+	border-radius: 0;
+	padding: 0.7rem 1.1rem;
+	background: var(--kordra-paper);
+	color: var(--kordra-ink);
+	font-size: 0.875rem;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.kordra-status__details .wp-block-button__link:hover,
+.kordra-error .wp-block-button__link:hover {
+	background: #dce0df;
+}
+
+.kordra-footer {
+	padding: 1.75rem var(--kordra-gutter);
+	color: var(--kordra-muted);
+	font-family: var(--wp--preset--font-family--ibm-plex-mono), monospace;
+	font-size: 0.75rem;
+	letter-spacing: 0.06em;
+}
+
+.kordra-footer__inner {
+	gap: 1rem 2rem;
+}
+
+.kordra-footer p {
+	margin: 0;
+}
+
+.kordra-footer__links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.25rem;
+}
+
+.kordra-footer a {
+	text-decoration: none;
+}
+
+.kordra-page,
+.kordra-reading {
+	min-height: 55vh;
+	padding: clamp(4.5rem, 9vw, 7.5rem) clamp(1.25rem, 6vw, 6.25rem);
+}
+
+.kordra-page__title {
+	max-width: 15ch;
+	margin: 0 0 1.75rem;
+	font-size: clamp(2.5rem, 6vw, 5rem);
+	font-weight: 700;
+	letter-spacing: -0.03em;
+	line-height: 1.08;
+}
+
+.kordra-page__intro {
+	max-width: 58ch;
+	margin: 0 0 3rem;
+	color: var(--kordra-muted);
+	font-size: clamp(1.125rem, 2vw, 1.25rem);
+	line-height: 1.7;
+}
+
+.kordra-feature-list,
+.kordra-resource-list {
+	margin: 3rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.kordra-feature-list li {
+	display: grid;
+	grid-template-columns: minmax(11rem, 0.38fr) minmax(0, 1fr);
+	gap: 1.5rem;
+	border-top: 1px solid var(--kordra-line);
+	padding: 1.5rem 0;
+}
+
+.kordra-feature-list h2 {
+	margin: 0;
+	font-size: 1.25rem;
+	font-weight: 600;
+}
+
+.kordra-feature-list p {
+	max-width: 58ch;
+	margin: 0;
+	color: var(--kordra-muted);
+	font-size: 1rem;
+	line-height: 1.7;
+}
+
+.kordra-resource-list li {
+	border-top: 1px solid var(--kordra-line);
+}
+
+.kordra-resource-list li:last-child {
+	border-bottom: 1px solid var(--kordra-line);
+}
+
+.kordra-resource-list a {
+	min-height: 3.75rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	font-size: 1rem;
+	text-decoration: none;
+}
+
+.kordra-page__note,
+.kordra-article__date,
+.kordra-post-row__date,
+.kordra-article__categories {
+	color: var(--kordra-muted);
+	font-family: var(--wp--preset--font-family--ibm-plex-mono), monospace;
+	font-size: 0.75rem;
+	letter-spacing: 0.04em;
+}
+
+.kordra-article {
+	padding-block: 1rem 4rem;
+}
+
+.kordra-article__date {
+	margin-bottom: 1rem;
+}
+
+.kordra-article .wp-block-post-featured-image {
+	margin-block: 2rem;
+}
+
+.kordra-article .wp-block-post-content {
+	max-width: 68ch;
+	margin-inline: auto;
+}
+
+.kordra-article .wp-block-post-content p,
+.kordra-article .wp-block-post-content li {
+	font-size: 1.0625rem;
+	line-height: 1.8;
+}
+
+.kordra-article .wp-block-post-content a,
+.kordra-page .wp-block-post-content a {
+	text-decoration: underline;
+}
+
+.kordra-article .wp-block-post-navigation-link {
+	margin-top: 2rem;
+}
+
+.kordra-post-row {
+	border-top: 1px solid var(--kordra-line);
+	padding: 1.75rem 0;
+}
+
+.kordra-post-row__date {
+	margin: 0 0 0.5rem;
+}
+
+.kordra-post-row__title {
+	margin: 0;
+	font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+.kordra-post-row__title a {
+	text-decoration: none;
+}
+
+.kordra-post-row .wp-block-post-excerpt {
+	max-width: 58ch;
+	margin-top: 0.75rem;
+	color: var(--kordra-muted);
+}
+
+.kordra-empty-state {
+	border-top: 1px solid var(--kordra-line);
+	padding-top: 1.5rem;
+	color: var(--kordra-muted);
+}
+
+.kordra-error {
+	min-height: 58vh;
+	padding-top: clamp(5rem, 12vw, 10rem);
+}
+
+.kordra-error > p {
+	max-width: 58ch;
+	color: var(--kordra-muted);
+	font-size: 1.0625rem;
+}
+
+.kordra-error .wp-block-buttons {
+	gap: 0.75rem;
+	margin-top: 2rem;
+}
+
+.kordra-error .is-style-outline .wp-block-button__link {
+	border-color: var(--kordra-line);
+	background: transparent;
+	color: var(--kordra-paper);
+}
+
+.kordra-error .is-style-outline .wp-block-button__link:hover {
+	background: var(--kordra-surface);
+}
+
+@media (max-width: 930px) {
+	.kordra-header__inner {
+		padding-inline: 1.5rem;
+	}
+
+	.kordra-navigation .wp-block-navigation__container {
+		gap: 1rem;
+	}
+
+	.kordra-statement__inner,
+	.kordra-status__inner {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 2rem;
+	}
+
+	.kordra-statement__side {
+		max-width: 34rem;
+		padding-top: 0;
+	}
+
+	.kordra-topology__inner {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 2.5rem;
+	}
+
+	.kordra-orbit-map {
+		max-width: 42rem;
+	}
+
+	.kordra-status__heading {
+		max-width: 20ch;
+	}
+}
+
+@media (max-width: 760px) {
+	.kordra-header__inner {
+		gap: 0.5rem;
+		padding-inline: 1.25rem;
+	}
+
+	.kordra-brand {
+		gap: 0.65rem;
+	}
+
+	.kordra-brand__descriptor {
+		padding-left: 0.65rem;
+		font-size: 0.75rem;
+	}
+
+	.kordra-navigation {
+		font-size: 0.75rem;
+	}
+
+	.kordra-navigation .wp-block-navigation__container {
+		gap: 0.65rem;
+	}
+}
+
+@media (max-width: 600px) {
+	.kordra-header__inner {
+		min-height: 4.125rem;
+	}
+
+	.kordra-art-hero__image {
+		height: 20rem;
+	}
+
+	.kordra-art-hero__image img {
+		object-position: center center;
+	}
+
+	.kordra-art-hero__edge {
+		top: 0.9rem;
+		font-size: 0.75rem;
+	}
+
+	.kordra-art-hero__edge--left {
+		left: 0.4rem;
+	}
+
+	.kordra-art-hero__edge--right {
+		right: 0.4rem;
+	}
+
+	.kordra-art-hero__status {
+		min-height: 3.75rem;
+		padding-inline: 1.25rem;
+		font-size: 0.75rem;
+	}
+
+	.kordra-art-hero__status p:last-child {
+		display: none;
+	}
+
+	.kordra-section {
+		padding-inline: 1.25rem;
+	}
+
+	.kordra-statement {
+		padding-top: 4.5rem;
+		padding-bottom: 4.75rem;
+	}
+
+	.kordra-display {
+		font-size: clamp(2.375rem, 10vw, 3.15rem);
+		line-height: 1.16;
+	}
+
+	.kordra-statement__positioning {
+		font-size: 1.5rem;
+	}
+
+	.kordra-flow__heading {
+		align-items: start;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	.kordra-flow__heading h2,
+	.kordra-topology__copy h2 {
+		font-size: clamp(1.9rem, 8vw, 2.55rem);
+	}
+
+	.kordra-flow__heading > p {
+		max-width: 32rem;
+	}
+
+	.kordra-flow__list {
+		display: block;
+		margin: 3.25rem 0 0 0.45rem;
+		border-left: 1px solid #697379;
+	}
+
+	.kordra-flow__list::before {
+		display: none;
+	}
+
+	.kordra-flow__list li {
+		padding: 0 0 1.8rem 1.8rem;
+	}
+
+	.kordra-flow__list li::before {
+		top: 0.25rem;
+		left: -0.45rem;
+	}
+
+	.kordra-flow__list li:first-child::before {
+		outline: 1px solid #59636a;
+		outline-offset: 3px;
+	}
+
+	.kordra-flow__list li > p {
+		max-width: 100%;
+		margin-top: 0.25rem;
+	}
+
+	.kordra-section-note {
+		margin-top: 1.25rem;
+	}
+
+	.kordra-orbit-map {
+		padding: 0.75rem;
+	}
+
+	.kordra-orbit-map__labels {
+		font-size: 20px;
+	}
+
+	.kordra-orbit-map figcaption {
+		font-size: 0.75rem;
+		line-height: 1.5;
+	}
+
+	.kordra-status__heading {
+		font-size: clamp(1.8rem, 7vw, 2.25rem);
+	}
+
+	.kordra-footer {
+		padding: 1.5rem 1.25rem;
+	}
+
+	.kordra-footer__tagline {
+		display: none;
+	}
+
+	.kordra-footer__links {
+		gap: 1rem;
+	}
+
+	.kordra-page,
+	.kordra-reading {
+		padding: 4.5rem 1.25rem;
+	}
+
+	.kordra-page__title {
+		font-size: clamp(2.4rem, 10vw, 3.5rem);
+	}
+
+	.kordra-feature-list li {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 0.5rem;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		transition-duration: 0.01ms !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+	}
+}

@@ -19,3 +19,35 @@ jobs:
         run: python3 tools/check_repository.py
       - name: Check whitespace
         run: git diff --check
+
+  website-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test website theme integrity
+        run: python3 -m unittest discover -s website/tests -v
+      - name: Validate isolated Compose configuration
+        run: docker compose --env-file website/dev/.env.example --project-directory website/dev -f website/dev/compose.yaml config --quiet
+      - name: Lint theme PHP with its WordPress PHP runtime
+        run: website/dev/lint-php.sh
+      - name: Start isolated WordPress and run HTTP smoke checks
+        run: |
+          cp website/dev/.env.example website/dev/.env
+          sed -i \
+            -e 's/local-only-change-this/ci-database-password-8d4f2a/' \
+            -e 's/local-only-root-change-this/ci-root-password-17b9ce/' \
+            -e 's/local-only-change-before-use/ci-admin-password-6a0e31/' \
+            website/dev/.env
+          website/dev/setup-local.sh
+          python3 website/dev/smoke-test.py
+      - name: Remove only the isolated KORDRA website Compose project
+        if: always()
+        run: |
+          if [ -f website/dev/.env ]; then
+            docker compose --env-file website/dev/.env --project-directory website/dev -f website/dev/compose.yaml down -v --remove-orphans
+          fi
+      - name: Check whitespace
+        run: git diff --check

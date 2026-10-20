@@ -1,0 +1,38 @@
+#!/usr/bin/env sh
+set -eu
+
+if ! wp core is-installed; then
+	wp core install \
+		--url="$LOCAL_SITE_URL" \
+		--title="KORDRA" \
+		--admin_user="$WORDPRESS_ADMIN_USER" \
+		--admin_password="$WORDPRESS_ADMIN_PASSWORD" \
+		--admin_email="$WORDPRESS_ADMIN_EMAIL" \
+		--skip-email
+fi
+
+wp option update blogname "KORDRA"
+wp option update blogdescription "One Control Plane. Any Infrastructure."
+wp theme activate kordra
+wp option update permalink_structure "/%postname%/"
+wp rewrite flush --hard
+
+home_id=$(wp post list --post_type=page --name=home --field=ID | head -n 1)
+if [ -z "$home_id" ]; then
+	home_id=$(wp post create --post_type=page --post_status=publish --post_title="Home" --post_name="home" --post_content="" --porcelain)
+fi
+wp option update show_on_front page
+wp option update page_on_front "$home_id"
+wp option update page_for_posts 0
+
+for page in "Features:features" "Documentation:documentation" "Releases:releases"; do
+	title=${page%%:*}
+	slug=${page#*:}
+	if ! wp post list --post_type=page --name="$slug" --field=ID | grep -q .; then
+		wp post create --post_type=page --post_status=publish --post_title="$title" --post_name="$slug" --post_content="" --porcelain
+	fi
+done
+
+if ! wp term get category updates --by=slug --field=term_id >/dev/null 2>&1; then
+	wp term create category Updates --slug=updates
+fi
