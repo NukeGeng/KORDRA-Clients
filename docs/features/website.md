@@ -80,7 +80,7 @@ Evidence captured on 2026-10-20:
 - `python3 -m unittest discover -s website/tests -v`: 9 tests passed.
 - `docker compose --env-file website/dev/.env.example --project-directory website/dev -f website/dev/compose.yaml config --quiet`: passed.
 - `git diff --check`: passed.
-- GitHub Actions run `39365972277` for commit `2ef954738f4063b54ff0c7d70c8f7a89126516c4`: `repository-integrity` and `website-quality` passed, including PHP lint and the isolated WordPress HTTP smoke test.
+- GitHub Actions run `39367187271` for commit `d38ad1f965b84e2110fbc42f102af60feed9ea63`: `repository-integrity` and `website-quality` passed. The website job linted theme and helper PHP, rendered editable title/body changes for all three public pages, reran local bootstrap, and verified the editorial changes remained visible over HTTP.
 - Docker CLI and Compose are installed, but the local Docker daemon socket is unavailable; host PHP CLI is absent. Local PHP lint, local WordPress smoke checks and 1440 / 768 / 390 browser screenshots have not been run. The CI runtime result does not replace browser viewport inspection.
 - No production WordPress site, Product service, or Product source was modified.
 
