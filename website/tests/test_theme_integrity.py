@@ -206,10 +206,13 @@ class ThemeIntegrity(unittest.TestCase):
 
     def test_local_bootstrap_uses_the_home_template_and_only_local_site_url(self):
         bootstrap = self.read("website/dev/wp-bootstrap.sh")
+        first_install = bootstrap.split("if ! wp core is-installed; then", 1)[1].split("\nfi", 1)[0]
         self.assertIn('wp option update show_on_front page', bootstrap)
         self.assertIn('wp option update page_on_front "$home_id"', bootstrap)
         self.assertIn('wp option update page_for_posts 0', bootstrap)
         self.assertIn('--url="$LOCAL_SITE_URL"', bootstrap)
+        self.assertIn("delete_core_default post hello-world", first_install)
+        self.assertIn("delete_core_default page sample-page", first_install)
         compose = self.read("website/dev/compose.yaml")
         self.assertIn("LOCAL_SITE_URL: http://127.0.0.1:8081", compose)
         self.assertTrue((ROOT / "website/dev/setup-local.sh").stat().st_mode & 0o111)

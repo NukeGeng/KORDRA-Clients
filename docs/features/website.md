@@ -69,7 +69,7 @@ Mapped checks:
 - WordPress Features / Documentation / Releases pages render editable core Page titles and body content, and a repeated local bootstrap preserves editorial changes.
 - Keyboard navigation, visible focus, landmarks, contrast, reduced motion, responsive navigation and no horizontal overflow.
 
-Acceptance requires the approved banner-led composition, the five-node sequence `ARTIFACT → APPROVE → DEPLOY → VERIFY → RECOVER`, a clearly marked conceptual topology diagram, honest Foundation / In Development status, functional public links, editable WordPress Page titles and body content that persist after local bootstrap reruns, native WordPress blog/archive templates and an honest empty release state when no release exists. No production deployment is part of this feature.
+Acceptance requires the approved banner-led composition, the five-node sequence `ARTIFACT → APPROVE → DEPLOY → VERIFY → RECOVER`, a clearly marked conceptual topology diagram, honest Foundation / In Development status, functional public links, editable WordPress Page titles and body content that persist after local bootstrap reruns, removal of WordPress's two default starter entries on first install only, native WordPress blog/archive templates and an honest empty release state when no release exists. No production deployment is part of this feature.
 
 ## Known limitations and evidence state
 

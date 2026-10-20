@@ -1,6 +1,15 @@
 #!/usr/bin/env sh
 set -eu
 
+delete_core_default() {
+	post_type=$1
+	slug=$2
+	post_id=$(wp post list --post_type="$post_type" --name="$slug" --field=ID | head -n 1)
+	if [ -n "$post_id" ]; then
+		wp post delete "$post_id" --force
+	fi
+}
+
 if ! wp core is-installed; then
 	wp core install \
 		--url="$LOCAL_SITE_URL" \
@@ -9,6 +18,8 @@ if ! wp core is-installed; then
 		--admin_password="$WORDPRESS_ADMIN_PASSWORD" \
 		--admin_email="$WORDPRESS_ADMIN_EMAIL" \
 		--skip-email
+	delete_core_default post hello-world
+	delete_core_default page sample-page
 fi
 
 wp option update blogname "KORDRA"

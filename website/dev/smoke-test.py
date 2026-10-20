@@ -2,7 +2,7 @@
 """Read-only HTTP smoke checks for the isolated local KORDRA WordPress site."""
 
 import os
-from urllib.error import URLError
+from urllib.error import HTTPError, URLError
 from urllib.request import urlopen
 
 
@@ -10,7 +10,11 @@ BASE_URL = "http://127.0.0.1:8081"
 
 
 def fetch(path: str) -> tuple[int, bytes, str]:
-    with urlopen(BASE_URL + path, timeout=8) as response:
+    try:
+        response_context = urlopen(BASE_URL + path, timeout=8)
+    except HTTPError as response_context:
+        pass
+    with response_context:
         body = response.read()
         content_type = response.headers.get("Content-Type", "")
         return response.status, body, content_type
@@ -67,6 +71,10 @@ def main() -> int:
                     assert title_marker in rendered_page, f"{path} title field is not rendered"
                 if body_marker:
                     assert body_marker in rendered_page, f"{path} body field is not rendered"
+
+        for path in ("/hello-world/", "/sample-page/"):
+            default_status, _, _ = fetch(path)
+            assert default_status == 404, f"WordPress starter content remains available at {path}"
 
         for path, expected_type in (
             ("/wp-content/themes/kordra/assets/css/site.css", "text/css"),
