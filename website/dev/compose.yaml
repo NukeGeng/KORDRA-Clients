@@ -69,6 +69,8 @@ services:
       - wordpress_data:/var/www/html
       - ../theme/kordra:/var/www/html/wp-content/themes/kordra:ro
       - ./wp-bootstrap.sh:/bootstrap.sh:ro
+      - ./seed-pages.php:/seed-pages.php:ro
+      - ../tests/seed-editorial-check.php:/test-editorial-check.php:ro
 
 volumes:
   database_data:

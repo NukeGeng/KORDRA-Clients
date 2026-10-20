@@ -6,11 +6,6 @@
  * Inserter: no
  */
 ?>
-<!-- wp:group {"tagName":"section","className":"kordra-section kordra-reading","layout":{"type":"constrained"}} -->
-<section class="wp-block-group kordra-section kordra-reading">
-	<!-- wp:heading {"level":1,"className":"kordra-page__title"} -->
-	<h1 class="wp-block-heading kordra-page__title">DOCUMENTATION.</h1>
-	<!-- /wp:heading -->
 	<!-- wp:paragraph {"className":"kordra-page__intro"} -->
 	<p class="kordra-page__intro">The public repository is the source for current KORDRA documentation. Product capabilities remain at Foundation / In Development.</p>
 	<!-- /wp:paragraph -->
@@ -25,5 +20,3 @@
 	<!-- wp:paragraph {"className":"kordra-page__note"} -->
 	<p class="kordra-page__note">Documentation is maintained in GitHub and is not automatically synchronized into WordPress.</p>
 	<!-- /wp:paragraph -->
-</section>
-<!-- /wp:group -->

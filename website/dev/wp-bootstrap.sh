@@ -25,13 +25,7 @@ wp option update show_on_front page
 wp option update page_on_front "$home_id"
 wp option update page_for_posts 0
 
-for page in "Features:features" "Documentation:documentation" "Releases:releases"; do
-	title=${page%%:*}
-	slug=${page#*:}
-	if ! wp post list --post_type=page --name="$slug" --field=ID | grep -q .; then
-		wp post create --post_type=page --post_status=publish --post_title="$title" --post_name="$slug" --post_content="" --porcelain
-	fi
-done
+wp eval-file /seed-pages.php
 
 if ! wp term get category updates --by=slug --field=term_id >/dev/null 2>&1; then
 	wp term create category Updates --slug=updates

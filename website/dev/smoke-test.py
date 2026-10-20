@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Read-only HTTP smoke checks for the isolated local KORDRA WordPress site."""
 
+import os
 from urllib.error import URLError
 from urllib.request import urlopen
 
@@ -33,16 +34,39 @@ def main() -> int:
         assert "wp-block-navigation__responsive-container-open" in page, "front page is missing the native mobile navigation control"
 
         pages = {
-            "/features/": "features in development",
-            "/documentation/": "documentation.",
-            "/releases/": "no public software release or download is available yet",
+            "/features/": os.environ.get(
+                "KORDRA_SMOKE_FEATURES_BODY_MARKER",
+                "kordra is being built around a governed release handoff",
+            ).lower(),
+            "/documentation/": os.environ.get(
+                "KORDRA_SMOKE_DOCUMENTATION_BODY_MARKER",
+                "documentation.",
+            ).lower(),
+            "/releases/": os.environ.get(
+                "KORDRA_SMOKE_RELEASES_BODY_MARKER",
+                "no public software release or download is available yet",
+            ).lower(),
             "/category/updates/": "no updates are published yet",
+        }
+        editorial_markers = {
+            "/features/": "FEATURES",
+            "/documentation/": "DOCUMENTATION",
+            "/releases/": "RELEASES",
         }
         for path, expected in pages.items():
             page_status, page_body, page_type = fetch(path)
             assert page_status == 200, f"{path} returned HTTP {page_status}"
             assert "text/html" in page_type, f"{path} returned unexpected content type: {page_type}"
-            assert expected in page_body.decode("utf-8", errors="replace").lower(), f"{path} is missing expected page content"
+            rendered_page = page_body.decode("utf-8", errors="replace").lower()
+            assert expected in rendered_page, f"{path} is missing expected page content"
+            if path in editorial_markers:
+                marker_key = editorial_markers[path]
+                title_marker = os.environ.get(f"KORDRA_SMOKE_{marker_key}_TITLE_MARKER", "").lower()
+                body_marker = os.environ.get(f"KORDRA_SMOKE_{marker_key}_BODY_MARKER", "").lower()
+                if title_marker:
+                    assert title_marker in rendered_page, f"{path} title field is not rendered"
+                if body_marker:
+                    assert body_marker in rendered_page, f"{path} body field is not rendered"
 
         for path, expected_type in (
             ("/wp-content/themes/kordra/assets/css/site.css", "text/css"),

@@ -6,11 +6,6 @@
  * Inserter: no
  */
 ?>
-<!-- wp:group {"tagName":"section","className":"kordra-section kordra-reading","layout":{"type":"constrained"}} -->
-<section class="wp-block-group kordra-section kordra-reading">
-	<!-- wp:heading {"level":1,"className":"kordra-page__title"} -->
-	<h1 class="wp-block-heading kordra-page__title">FEATURES IN DEVELOPMENT.</h1>
-	<!-- /wp:heading -->
 	<!-- wp:paragraph {"className":"kordra-page__intro"} -->
 	<p class="kordra-page__intro">KORDRA is being built around a governed release handoff. The capabilities below describe product direction; they are not a claim that an end-to-end release platform is available today.</p>
 	<!-- /wp:paragraph -->
@@ -26,5 +21,3 @@
 	<!-- wp:paragraph {"className":"kordra-section-note"} -->
 	<p class="kordra-section-note">PRODUCT DIRECTION · FOUNDATION / IN DEVELOPMENT</p>
 	<!-- /wp:paragraph -->
-</section>
-<!-- /wp:group -->

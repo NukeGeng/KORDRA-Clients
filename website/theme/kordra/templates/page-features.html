@@ -1,7 +1,12 @@
 <!-- wp:template-part {"slug":"header","theme":"kordra","tagName":"header"} /-->
 <!-- wp:group {"tagName":"main","anchor":"kordra-main","className":"kordra-main","layout":{"type":"default"}} -->
 <main id="kordra-main" class="wp-block-group kordra-main">
-	<!-- wp:pattern {"slug":"kordra/features-page"} /-->
+	<!-- wp:group {"tagName":"section","className":"kordra-section kordra-reading","layout":{"type":"constrained"}} -->
+	<section class="wp-block-group kordra-section kordra-reading">
+		<!-- wp:post-title {"level":1,"className":"kordra-page__title"} /-->
+		<!-- wp:post-content {"className":"kordra-page-content","layout":{"type":"constrained"}} /-->
+	</section>
+	<!-- /wp:group -->
 </main>
 <!-- /wp:group -->
 <!-- wp:template-part {"slug":"footer","theme":"kordra","tagName":"footer"} /-->

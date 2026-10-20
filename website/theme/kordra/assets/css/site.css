@@ -579,6 +579,19 @@ svg {
 	line-height: 1.7;
 }
 
+.kordra-page-content {
+	max-width: var(--kordra-content);
+	margin-inline: auto;
+}
+
+.kordra-page-content:empty {
+	display: none;
+}
+
+.kordra-page-content > :first-child {
+	margin-block-start: 0;
+}
+
 .kordra-feature-list,
 .kordra-resource-list {
 	margin: 3rem 0 0;
@@ -769,12 +782,11 @@ svg {
 	}
 
 	.kordra-brand__descriptor {
-		padding-left: 0.65rem;
-		font-size: 0.75rem;
+		display: none;
 	}
 
 	.kordra-navigation {
-		font-size: 0.75rem;
+		font-size: 0.875rem;
 	}
 
 	.kordra-navigation .wp-block-navigation__container {

@@ -149,6 +149,21 @@ class ThemeIntegrity(unittest.TestCase):
         self.assertIn("https://github.com/NukeGeng/KORDRA/releases", releases)
         self.assertNotIn("download button", releases.lower())
 
+        for slug in ("features", "documentation", "releases"):
+            template = self.read(f"website/theme/kordra/templates/page-{slug}.html")
+            pattern = self.read(f"website/theme/kordra/patterns/{slug}-page.php")
+            self.assertIn("wp:post-content", template)
+            self.assertIn("wp:post-title", template)
+            self.assertNotIn("wp:pattern", template)
+            self.assertNotIn("wp:post-title", pattern)
+            self.assertNotIn("<h1", pattern)
+
+        seed_pages = self.read("website/dev/seed-pages.php")
+        self.assertIn("get_registered( $page_config['pattern'] )", seed_pages)
+        self.assertIn("get_post_meta( $page->ID, '_kordra_website_seeded', true )", seed_pages)
+        self.assertIn("update_post_meta( $result, '_kordra_website_seeded', '1' )", seed_pages)
+        self.assertIn("wp_insert_post( $post_data, true )", seed_pages)
+
     def test_responsive_accessibility_and_reduced_motion_rules_exist(self):
         css = self.read("website/theme/kordra/assets/css/site.css")
         self.assertIn(":focus-visible", css)
@@ -157,6 +172,8 @@ class ThemeIntegrity(unittest.TestCase):
         self.assertIn("max-width: 760px", css)
         self.assertIn("max-width: 600px", css)
         self.assertIn("font-size: 20px", css)
+        self.assertRegex(css, r"\.kordra-brand__descriptor\s*\{\s*display: none;")
+        self.assertRegex(css, r"\.kordra-navigation\s*\{\s*font-size: 0\.875rem;")
         self.assertNotIn("box-shadow:", css)
         self.assertNotIn("@import url(", css)
 
@@ -172,6 +189,8 @@ class ThemeIntegrity(unittest.TestCase):
         self.assertNotRegex(db_service, r"(?m)^\s+ports:")
         wpcli_service = compose.split("\n  wpcli:", 1)[1].split("\nvolumes:", 1)[0]
         self.assertIn("./wp-bootstrap.sh:/bootstrap.sh:ro", wpcli_service)
+        self.assertIn("./seed-pages.php:/seed-pages.php:ro", wpcli_service)
+        self.assertIn("../tests/seed-editorial-check.php:/test-editorial-check.php:ro", wpcli_service)
         self.assertIn("../theme/kordra:/var/www/html/wp-content/themes/kordra:ro", wpcli_service)
         self.assertNotIn("kordra.id.vn", compose)
 

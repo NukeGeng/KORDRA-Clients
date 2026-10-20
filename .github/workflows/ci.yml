@@ -42,7 +42,15 @@ jobs:
             -e 's/local-only-change-before-use/ci-admin-password-6a0e31/' \
             website/dev/.env
           website/dev/setup-local.sh
+          docker compose --env-file website/dev/.env --project-directory website/dev -f website/dev/compose.yaml run --rm wpcli 'wp eval-file /test-editorial-check.php'
           python3 website/dev/smoke-test.py
+        env:
+          KORDRA_SMOKE_FEATURES_TITLE_MARKER: editorial title check
+          KORDRA_SMOKE_FEATURES_BODY_MARKER: editor body check features
+          KORDRA_SMOKE_DOCUMENTATION_TITLE_MARKER: editorial title check
+          KORDRA_SMOKE_DOCUMENTATION_BODY_MARKER: editor body check documentation
+          KORDRA_SMOKE_RELEASES_TITLE_MARKER: editorial title check
+          KORDRA_SMOKE_RELEASES_BODY_MARKER: editor body check releases
       - name: Remove only the isolated KORDRA website Compose project
         if: always()
         run: |

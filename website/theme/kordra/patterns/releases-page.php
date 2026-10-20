@@ -6,11 +6,6 @@
  * Inserter: no
  */
 ?>
-<!-- wp:group {"tagName":"section","className":"kordra-section kordra-reading kordra-releases","layout":{"type":"constrained"}} -->
-<section class="wp-block-group kordra-section kordra-reading kordra-releases">
-	<!-- wp:heading {"level":1,"className":"kordra-page__title"} -->
-	<h1 class="wp-block-heading kordra-page__title">RELEASES.</h1>
-	<!-- /wp:heading -->
 	<!-- wp:paragraph {"className":"kordra-page__intro"} -->
 	<p class="kordra-page__intro">KORDRA is in development. No public software release or download is available yet.</p>
 	<!-- /wp:paragraph -->
@@ -27,5 +22,3 @@
 	<!-- wp:paragraph {"className":"kordra-section-note"} -->
 	<p class="kordra-section-note">FOUNDATION · IN DEVELOPMENT</p>
 	<!-- /wp:paragraph -->
-</section>
-<!-- /wp:group -->
