@@ -12,9 +12,9 @@ BASE_URL = "http://127.0.0.1:8081"
 def fetch(path: str) -> tuple[int, bytes, str]:
     try:
         response_context = urlopen(BASE_URL + path, timeout=8)
-    except HTTPError as response_context:
-        pass
-    with response_context:
+    except HTTPError as error:
+        response_context = error
+    with response_context as response:
         body = response.read()
         content_type = response.headers.get("Content-Type", "")
         return response.status, body, content_type
