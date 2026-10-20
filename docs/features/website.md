@@ -72,14 +72,15 @@ Acceptance requires the approved banner-led composition, the five-node sequence 
 
 ## Known limitations and evidence state
 
-**Source status: Implemented. Runtime and browser status: Not yet verified.** The archive, reference screenshots and banner are imported, and the WordPress Block Theme plus isolated Compose setup are implemented on the feature branch.
+**Source status: Implemented. CI PHP/runtime status: Verified. Local visual/browser status: Pending.** The archive, reference screenshots and banner are imported, and the WordPress Block Theme plus isolated Compose setup are implemented on the feature branch.
 
 Evidence captured on 2026-10-20:
 
 - `python3 -m unittest discover -s website/tests -v`: 9 tests passed.
 - `docker compose --env-file website/dev/.env.example --project-directory website/dev -f website/dev/compose.yaml config --quiet`: passed.
 - `git diff --check`: passed.
-- Docker CLI and Compose are installed, but the Docker daemon socket is unavailable; host PHP CLI is absent. Therefore local PHP lint, WordPress HTTP smoke checks and 1440 / 768 / 390 browser screenshots have not been run. GitHub CI is configured to run PHP lint and the isolated runtime smoke test.
+- GitHub Actions run `39365972277` for commit `2ef954738f4063b54ff0c7d70c8f7a89126516c4`: `repository-integrity` and `website-quality` passed, including PHP lint and the isolated WordPress HTTP smoke test.
+- Docker CLI and Compose are installed, but the local Docker daemon socket is unavailable; host PHP CLI is absent. Local PHP lint, local WordPress smoke checks and 1440 / 768 / 390 browser screenshots have not been run. The CI runtime result does not replace browser viewport inspection.
 - No production WordPress site, Product service, or Product source was modified.
 
-These results establish static implementation and configuration only. They do not establish a locally running WordPress site, browser-level responsiveness, accessibility conformance, or production readiness. Add CI run and browser evidence after those checks complete.
+These results establish static implementation, PHP syntax and an isolated CI WordPress runtime. They do not establish local browser rendering, responsive screenshots, full accessibility conformance, or production readiness. Add browser evidence after that inspection completes.
