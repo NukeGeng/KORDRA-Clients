@@ -111,7 +111,13 @@ Historical implementation decision: native browser scheduling and text-range mea
 
 ## Known limitations and evidence state
 
-**Current source status: the uncommitted Clients working tree contains theme 0.2.27 with the primary navbar sticky in the page flow while scrolling. The local-only 0.2.21 section-navigation experiment was removed at the owner's request. Production WordPress remains on the previously published 0.2.20; theme 0.2.27 has not been deployed.**
+**Current source status: Clients `main` contains theme 0.2.27 with the primary navbar sticky in the page flow while scrolling. The local-only 0.2.21 section-navigation experiment was removed at the owner's request. Production WordPress remains on the previously published 0.2.20; theme 0.2.27 has not been deployed.**
+
+### Merge evidence
+
+- Clients PR [#1](https://github.com/NukeGeng/KORDRA-Clients/pull/1) merged into `main` on 2026-10-22 at 10:45 +07:00. Source head: `7f583b512e3bf23bcc31564906ce69dc838278aa`; merge commit: `076db88fbd5d803dbec9ef4d2e985a0e357b699b`.
+- GitHub Actions run [39714688538](https://github.com/NukeGeng/KORDRA-Clients/actions/runs/39714688538) passed `repository-integrity` and `website-quality` at the exact PR head.
+- This merges the Clients repository only. A separate Product integration PR is required to change the parent submodule pin. No live WordPress deployment occurred; production remains on theme 0.2.20.
 
 Theme 0.2.27 implementation captured on 2026-10-22:
 
@@ -119,7 +125,7 @@ Theme 0.2.27 implementation captured on 2026-10-22:
 - Preserved the primary desktop links, mobile responsive menu, GitHub action, and all routes. No Product source, production WordPress, parent repository or submodule pin changed.
 - Reloaded the local browser preview and scrolled to `scrollY=2670`: the primary navbar remained visible at the viewport top (`top=0`, `height=85px`) and the secondary bar was absent. The desktop links and GitHub action were visible in the preview.
 - At 642px, the navbar collapsed to its menu button; opening it exposed the four existing routes, and Escape closed it and restored focus to the trigger. At the 456px preview width, the sticky mobile header and GitHub action remained visible after scrolling.
-- Automated tests were not run for this request. Production remains on theme 0.2.20; this local change has not been deployed.
+- At exact PR head `7f583b512e3bf23bcc31564906ce69dc838278aa`, 14 website integrity tests and 16 reveal behavior tests passed; Compose configuration, PHP syntax lint and the read-only local WordPress HTTP smoke passed. Product `doccheck.py` reported 0 errors/warnings, and Product AMR gates passed. The local preview verified sticky behavior while scrolling, the 642px menu breakpoint, Escape close and focus restoration. No live WordPress deployment occurred.
 
 Theme 0.2.26 attempt (superseded, never deployed):
 
@@ -192,11 +198,11 @@ Historical evidence for earlier theme revisions:
 - The earlier CSS 0.2.4 snapshots were insufficient interaction evidence and are superseded by this defect correction. The earlier parent AMR gate did not establish frontend behavior; validation for this work belongs to the independent Clients repository.
 - Historical baseline only: GitHub Actions run `39368056950` for `bb00c5a9013fbbc10c9545e1d64ce1cb6ee6f41a` passed repository and website jobs, including isolated PHP/WordPress/editorial checks. This does not verify the current revision. The website job now also runs the native controller's behavior tests.
 
-The initial 2026-10-21 production setup installed/activated the owner-authorized theme, set post-name permalinks, set the site title and tagline, published the three matching editorial pages and added the Updates category; existing sample content was preserved. Subsequent 0.2.11 and 0.2.20 publications updated theme files only. Theme 0.2.21's section-navigation experiment and themes 0.2.22–0.2.27 remain local and uncommitted; production remains on 0.2.20. No Product source/service, contract or tenant boundary changed. Local checks do not establish full accessibility conformance or product production-readiness. GitHub CI remains to be run against a committed revision.
+The initial 2026-10-21 production setup installed/activated the owner-authorized theme, set post-name permalinks, set the site title and tagline, published the three matching editorial pages and added the Updates category; existing sample content was preserved. Subsequent 0.2.11 and 0.2.20 publications updated theme files only. The local 0.2.21 section-navigation experiment remains removed; themes 0.2.22–0.2.27 are committed on Clients `main`, with 0.2.27 as the current source. Production remains on 0.2.20. PR #1's GitHub Actions run `39714688538` passed both required jobs at its exact source head; see Merge evidence above. No Product source/service, contract or tenant boundary changed. Local checks do not establish full accessibility conformance or product production-readiness.
 
 ## Change log
 
-- 2026-10-22, theme 0.2.27: corrected the sticky navbar after the fixed-wrapper attempts left an empty header band during deep scrolling. The outer WordPress header template part now uses in-flow `position: sticky`, keeping its own height in layout without a compensating spacer. Preserved desktop/mobile navigation, routes, GitHub action and WordPress admin-bar offsets. Manual preview at 858px showed the navbar at the viewport top after scrolling to 2670px; the sub-navbar was absent. Automated tests were not run. Not deployed; production remains on 0.2.20.
+- 2026-10-22, theme 0.2.27: corrected the sticky navbar after the fixed-wrapper attempts left an empty header band during deep scrolling. The outer WordPress header template part now uses in-flow `position: sticky`, keeping its own height in layout without a compensating spacer. Preserved desktop/mobile navigation, routes, GitHub action and WordPress admin-bar offsets. Manual preview at 858px showed the navbar at the viewport top after scrolling to 2670px; the sub-navbar was absent. Passed 14 website integrity tests, 16 reveal behavior tests, Compose configuration, PHP lint and local WordPress HTTP smoke. Merged to Clients `main` in PR #1 (head `7f583b5`, merge commit `076db88`). Not deployed; production remains on 0.2.20.
 - 2026-10-22, theme 0.2.26 (superseded, never deployed): raised the fixed header wrapper's stacking order and refreshed the stylesheet version. Deep-scroll preview still showed an empty header band; replaced by 0.2.27.
 - 2026-10-22, theme 0.2.25 (superseded, never deployed): removed root clipping and pinned the outer WordPress header with reserved page-flow space. The local deep-scroll preview still did not show the navbar links consistently; replaced by the in-flow sticky implementation in 0.2.27.
 - 2026-10-22, theme 0.2.24 (superseded, never deployed): pinned the outer header and reserved its height but retained root clipping, which kept the header from displaying through deep scroll. Replaced by 0.2.25.
