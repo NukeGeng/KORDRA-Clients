@@ -12,15 +12,17 @@
 	<div class="wp-block-group alignwide kordra-statement__inner">
 		<!-- wp:group {"className":"kordra-statement__main","layout":{"type":"constrained"}} -->
 		<div class="wp-block-group kordra-statement__main">
-			<!-- wp:heading {"level":1,"className":"kordra-display"} -->
-			<h1 class="wp-block-heading kordra-display">CONTROL<br />THE <em>HANDOFF.</em></h1>
+			<!-- wp:heading {"level":1,"className":"kordra-display kordra-typewriter-lines"} -->
+			<h1 class="wp-block-heading kordra-display kordra-typewriter-lines"><span class="kordra-typewriter-line">CONTROL</span>
+				<span class="kordra-typewriter-line">THE <em>HANDOFF.</em></span></h1>
 			<!-- /wp:heading -->
 		</div>
 		<!-- /wp:group -->
 		<!-- wp:group {"className":"kordra-statement__side","layout":{"type":"constrained"}} -->
 		<div class="wp-block-group kordra-statement__side">
-			<!-- wp:paragraph {"className":"kordra-statement__positioning"} -->
-			<p class="kordra-statement__positioning">One Control Plane.<br />Any Infrastructure.</p>
+			<!-- wp:paragraph {"className":"kordra-statement__positioning kordra-typewriter-lines"} -->
+			<p class="kordra-statement__positioning kordra-typewriter-lines"><span class="kordra-typewriter-line">One Control Plane.</span>
+				<span class="kordra-typewriter-line">Any Infrastructure.</span></p>
 			<!-- /wp:paragraph -->
 			<!-- wp:paragraph {"className":"kordra-statement__copy"} -->
 			<p class="kordra-statement__copy">KORDRA is being built to carry an immutable artifact through governed decisions toward deployment, verification and recovery.</p>

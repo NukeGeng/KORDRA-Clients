@@ -29,6 +29,29 @@ add_action(
 			array(),
 			$theme->get( 'Version' )
 		);
+		wp_enqueue_script(
+			'kordra-gsap',
+			get_theme_file_uri( 'assets/js/vendor/gsap.min.js' ),
+			array(),
+			'3.15.0',
+			array( 'in_footer' => true, 'strategy' => 'defer' )
+		);
+		wp_enqueue_script(
+			'kordra-mobile-navigation',
+			get_theme_file_uri( 'assets/js/mobile-navigation.js' ),
+			array( 'kordra-gsap' ),
+			$theme->get( 'Version' ),
+			array( 'in_footer' => true, 'strategy' => 'defer' )
+		);
+		if ( is_front_page() ) {
+			wp_enqueue_script(
+				'kordra-reveal',
+				get_theme_file_uri( 'assets/js/reveal.js' ),
+				array( 'kordra-gsap' ),
+				$theme->get( 'Version' ),
+				array( 'in_footer' => true, 'strategy' => 'defer' )
+			);
+		}
 	}
 );
 

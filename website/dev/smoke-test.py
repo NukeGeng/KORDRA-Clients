@@ -35,6 +35,7 @@ def main() -> int:
         assert "not a claim of shipped capability" in page, "release workflow lacks its product-direction label"
         assert "not live telemetry" in page, "topology diagram lacks its conceptual label"
         assert "skip to content" in page, "front page is missing its keyboard skip link"
+        assert "/assets/js/reveal.js" in page, "front page is missing its text-entry enhancement"
         assert "wp-block-navigation__responsive-container-open" in page, "front page is missing the native mobile navigation control"
 
         pages = {
@@ -78,6 +79,7 @@ def main() -> int:
 
         for path, expected_type in (
             ("/wp-content/themes/kordra/assets/css/site.css", "text/css"),
+            ("/wp-content/themes/kordra/assets/js/reveal.js", "javascript"),
             ("/wp-content/themes/kordra/assets/images/banner.webp", "image/webp"),
         ):
             asset_status, _, asset_type = fetch(path)

@@ -15,7 +15,7 @@
       "defaultGradients": false,
       "defaultPalette": false,
       "palette": [
-        { "slug": "ink", "color": "#0b0d0f", "name": "Ink" },
+        { "slug": "ink", "color": "#000000", "name": "Ink" },
         { "slug": "surface", "color": "#101317", "name": "Raised surface" },
         { "slug": "paper", "color": "#f3f2ed", "name": "Paper" },
         { "slug": "muted", "color": "#b3bbc1", "name": "Muted text" },

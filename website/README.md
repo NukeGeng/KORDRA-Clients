@@ -6,7 +6,7 @@ The approved Orbital Control prototype and reference images are preserved under 
 
 ## Local WordPress
 
-Requirements: Docker Desktop running with Compose v2. PHP is provided by the official WordPress image; no local PHP or JavaScript package manager is required.
+Requirements: Docker Desktop running with Compose v2. PHP is provided by the official WordPress image. Node.js 22 or newer runs the native animation tests; no JavaScript package manager or package installation is required.
 
 ```sh
 cd /Users/dangvyhao/Documents/KORDRA/clients
@@ -37,6 +37,7 @@ For a local smoke check after WordPress setup, use `python3 website/dev/smoke-te
 python3 -m unittest discover -s tests -v
 python3 tools/check_repository.py
 python3 -m unittest discover -s website/tests -v
+node --test website/tests/reveal.test.cjs
 docker compose --env-file website/dev/.env.example --project-directory website/dev -f website/dev/compose.yaml config --quiet
 website/dev/lint-php.sh
 python3 website/dev/smoke-test.py

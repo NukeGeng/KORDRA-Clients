@@ -12,6 +12,7 @@
 
 ```sh
 python3 -m unittest discover -s website/tests -v
+node --test website/tests/reveal.test.cjs
 docker compose --env-file website/dev/.env.example --project-directory website/dev -f website/dev/compose.yaml config --quiet
 website/dev/lint-php.sh
 website/dev/setup-local.sh
