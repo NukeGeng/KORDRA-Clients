@@ -21,6 +21,10 @@ class RepositoryIntegrity(unittest.TestCase):
             target = self.root / name
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(source, target)
+        website_source = check_repository.ROOT / 'website'
+        shutil.copytree(website_source, self.root / 'website')
+        website_feature = check_repository.ROOT / 'docs/features/website.md'
+        shutil.copyfile(website_feature, self.root / 'docs/features/website.md')
 
     def test_standalone_scaffold_does_not_need_parent_checkout(self):
         self.assertEqual(check_repository.check(self.root), [])

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Kordra is an in-development DevOps control plane for governed releases, deployments and recovery.">
+  <title>KORDRA — One Control Plane. Any Infrastructure.</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <a href="#home" class="brand" aria-label="Kordra home">
+      <svg class="brand-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <circle cx="14" cy="14" r="10.2" stroke="currentColor" stroke-width="1.25" stroke-dasharray="53 12"/>
+        <path d="M10 6v16M10 14h5l5-7M15 14l5 7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        <circle cx="4.6" cy="14" r="2.2" fill="currentColor"/><circle cx="21.7" cy="6.5" r="2" fill="currentColor"/><circle cx="21.7" cy="21.3" r="2" fill="currentColor"/>
+      </svg>
+      <span>KORDRA</span>
+      <small>CONTROL PLANE</small>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#approach">The approach</a>
+      <a href="#flow">Release flow</a>
+      <a href="https://github.com/NukeGeng/KORDRA/tree/main/docs">Documentation</a>
+    </nav>
+    <a class="top-git" href="https://github.com/NukeGeng/KORDRA" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 8.36 23c.58.1.8-.25.8-.56v-2.16c-3.26.7-3.95-1.38-3.95-1.38-.53-1.35-1.3-1.7-1.3-1.7-1.07-.73.08-.72.08-.72 1.18.09 1.8 1.22 1.8 1.22 1.04 1.78 2.72 1.27 3.38.97.1-.75.4-1.27.73-1.56-2.6-.3-5.33-1.3-5.33-5.69 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.48.12-3.05 0 0 .98-.31 3.16 1.18a11 11 0 0 1 5.75 0c2.18-1.49 3.16-1.18 3.16-1.18.64 1.57.24 2.75.12 3.05.75.81 1.2 1.84 1.2 3.1 0 4.4-2.74 5.38-5.35 5.67.42.36.79 1.06.79 2.14v3.17c0 .32.21.67.81.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+      <span>GitHub</span><span class="arrow">↗</span>
+    </a>
+  </header>
+  <main id="main">
+    <section class="art-hero" id="home" aria-label="Kordra brand visual">
+      <div class="art-wrapper">
+        <img src="assets/banner.png" alt="Original Kordra brand banner with Kordra wordmark between orbital data networks" fetchpriority="high">
+      </div>
+      <div class="art-edge art-edge-left">SYSTEM DESIGN / 2026</div>
+      <div class="art-edge art-edge-right">BUILT TO CONTROL THE HANDOFF</div>
+      <div class="hero-bottom">
+        <span class="status-indicator"><i aria-hidden="true"></i> FOUNDATION · IN DEVELOPMENT</span>
+        <span class="coord">01° / PRODUCT INTENT</span>
+      </div>
+    </section>
+    <section class="statement section-frame" id="approach">
+      <div class="statement-main">
+        <h1>CONTROL<br>THE <em>HANDOFF.</em></h1>
+      </div>
+      <div class="statement-side">
+        <span class="mini-rule"></span>
+        <p>One Control Plane.<br>Any Infrastructure.</p>
+        <div class="statement-copy">From a verified artifact to a governed release. Know what is approved, what is running, and how to recover.</div>
+        <a href="https://github.com/NukeGeng/KORDRA" class="text-link" target="_blank" rel="noopener noreferrer">Explore the open development <span>↗</span></a>
+      </div>
+    </section>
+    <section class="flow section-frame" id="flow" aria-labelledby="flow-title">
+      <div class="section-head">
+        <h2 id="flow-title">THE RELEASE IS<br><span>A CHAIN OF DECISIONS.</span></h2>
+        <p>Release control, without replacing the infrastructure you already trust.</p>
+      </div>
+      <div class="flow-line" aria-label="Planned release workflow">
+        <div class="flow-step"><div class="point"><span></span></div><b>ARTIFACT</b><p>Identify a pinned build.</p></div>
+        <div class="flow-step"><div class="point"><span></span></div><b>APPROVE</b><p>Authorize the exact change.</p></div>
+        <div class="flow-step"><div class="point"><span></span></div><b>DEPLOY</b><p>Execute on the right target.</p></div>
+        <div class="flow-step"><div class="point"><span></span></div><b>VERIFY</b><p>Observe the real outcome.</p></div>
+        <div class="flow-step"><div class="point"><span></span></div><b>RECOVER</b><p>Preserve a safe way back.</p></div>
+      </div>
+      <p class="section-footnote">PRODUCT DIRECTION — NOT A CLAIM OF SHIPPED CAPABILITY.</p>
+    </section>
+    <section class="manifesto section-frame">
+      <div class="manifesto-copy">
+        <h2>WORK WITH<br>WHAT EXISTS.</h2>
+        <p>Kordra is designed to sit above existing delivery systems—not rebuild CI, orchestrators, or observability from scratch.</p>
+        <a href="https://github.com/NukeGeng/KORDRA/tree/main/docs/product" class="text-link">Read the roadmap <span>↗</span></a>
+      </div>
+      <div class="orbit-map" role="img" aria-label="Conceptual orbital topology diagram showing source, control and infrastructure targets">
+        <svg viewBox="0 0 580 390" aria-hidden="true">
+          <defs><pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M36 0H0V36" fill="none" stroke="#353a40" stroke-width=".45"/></pattern></defs>
+          <rect width="580" height="390" fill="url(#grid)" opacity=".7"/>
+          <circle cx="302" cy="190" r="149" stroke="#858c95" stroke-opacity=".45" fill="none" stroke-dasharray="3 7"/>
+          <circle cx="302" cy="190" r="112" stroke="#707983" stroke-opacity=".38" fill="none"/>
+          <circle cx="302" cy="190" r="69" stroke="#c3cbd1" stroke-opacity=".65" fill="none"/>
+          <path d="M54 115L302 190L518 89M78 297L302 190L519 317" stroke="#828990" stroke-width="1" stroke-opacity=".68"/>
+          <path d="M169 76L302 190L416 325" stroke="#d6d7d5" stroke-width="1" stroke-opacity=".36" stroke-dasharray="5 7"/>
+          <circle cx="302" cy="190" r="30" fill="#0e1114" stroke="#f2f1ec" stroke-width="1.7"/>
+          <path d="M291 175V205M291 191H301L312 175M301 191L312 205" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+          <g fill="#e7e8e4"><circle cx="54" cy="115" r="5.4"/><circle cx="518" cy="89" r="6"/><circle cx="78" cy="297" r="5.4"/><circle cx="519" cy="317" r="5.4"/><circle cx="302" cy="41" r="3.5"/><circle cx="153" cy="190" r="3.5"/></g>
+          <g font-family="monospace" font-size="11" fill="#c1c5c8" letter-spacing="2"><text x="42" y="99">BUILD</text><text x="468" y="73">TARGET</text><text x="43" y="327">POLICY</text><text x="454" y="343">RECOVER</text><text x="266" y="242">CONTROL</text></g>
+        </svg>
+        <div class="diagram-tag">CONCEPTUAL CONTROL TOPOLOGY / NOT LIVE TELEMETRY</div>
+      </div>
+    </section>
+    <section class="prealpha section-frame">
+      <div class="prealpha-title">BUILDING IN THE OPEN.<br><span>NO PRETEND FINISH LINE.</span></div>
+      <div class="prealpha-cta"><p>Kordra is in its foundation stage. Follow the implementation, decisions and release roadmap on GitHub.</p><a href="https://github.com/NukeGeng/KORDRA" class="button-plain">View the repository <span>↗</span></a></div>
+    </section>
+  </main>
+  <footer class="footer section-frame"><span>KORDRA © 2026</span><span>ONE CONTROL PLANE. ANY INFRASTRUCTURE.</span><a href="#home">BACK TO TOP ↑</a></footer>
+</body>
+</html>

@@ -58,7 +58,7 @@ def main():
     errors = check(ROOT)
     for error in errors:
         print('ERROR:', error)
-    print(f'Clients scaffold: {len(errors)} errors; application build/browser tests not configured')
+    print(f'Clients scaffold links and contract: {len(errors)} errors; this checker does not run application or browser tests')
     return bool(errors)
 
 
