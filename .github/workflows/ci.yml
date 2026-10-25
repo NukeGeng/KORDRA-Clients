@@ -20,6 +20,33 @@ jobs:
       - name: Check whitespace
         run: git diff --check
 
+  desktop-quality:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: desktop
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: desktop/package-lock.json
+      - name: Install Desktop dependencies
+        run: npm ci
+      - name: Check Desktop TypeScript
+        run: npm run typecheck
+      - name: Test local preview workflows
+        run: npm test
+      - name: Install Chromium for Desktop browser tests
+        run: npx playwright install --with-deps chromium
+      - name: Test Desktop routes and interactions in Chromium
+        run: npm run test:ui
+      - name: Build Desktop web preview
+        run: npm run build
+      - name: Audit Desktop dependencies
+        run: npm audit --audit-level=moderate
+
   website-quality:
     runs-on: ubuntu-latest
     steps:

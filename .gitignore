@@ -12,3 +12,5 @@ test-results/
 .env.*
 !.env.example
 *.log
+target/
+desktop/src-tauri/gen/
