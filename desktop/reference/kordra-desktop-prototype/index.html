@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="KORDRA Desktop Control Plane — an interactive, synthetic-data-only design prototype." />
+  <title>KORDRA — Control Plane Preview</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <aside id="sidebar" class="sidebar" aria-label="Primary navigation">
+      <a href="#overview" class="brand" aria-label="KORDRA, go to overview">
+        <span class="brand-symbol" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="brand-wordmark">KORDRA<span class="brand-subtitle">CONTROL PLANE</span></span>
+      </a>
+      <div class="workspace-area"><div class="minor-label">WORKSPACE</div><button type="button" class="workspace-switch" id="workspace-button"><span class="workspace-emblem">K</span><span class="workspace-copy"><b>Operator workspace</b><small>Local design preview</small></span><span data-icon="chevrons-up-down" class="workspace-chevron"></span></button></div>
+      <nav id="navigation"></nav>
+      <div class="sidebar-bottom"><div class="sidebar-preview"><span class="preview-pulse"></span><span><b>Preview environment</b><small>No backend connection</small></span></div><div class="sidebar-person"><div class="avatar">OP</div><span><b>Demo operator</b><small>Local session</small></span><span data-icon="ellipsis" class="person-more"></span></div></div>
+    </aside>
+    <div id="scrim" class="scrim" hidden></div>
+    <div class="app-body">
+      <header class="topbar"><div class="topbar-breadcrumb"><button id="menu-toggle" class="icon-button mobile-menu" aria-label="Open navigation"><span data-icon="menu"></span></button><span class="breadcrumb-root">KORDRA</span><span data-icon="chevron-right" class="crumb-sep"></span><h1 id="breadcrumb" class="breadcrumb-current">Overview</h1></div><div class="topbar-actions"><button id="global-search" class="search-trigger"><span data-icon="search"></span><span>Search resources...</span><kbd>⌘ K</kbd></button><span class="topbar-divider"></span><span class="connection-label"><span class="connection-dot"></span> Offline preview</span><button class="icon-button help-button" id="help-button" aria-label="About this preview"><span data-icon="circle-help"></span></button></div></header>
+      <div class="preview-banner" role="status"><span data-icon="flask-conical"></span><span><b>Design preview</b> — All environments, resources, releases and activity below are synthetic. No connection to real infrastructure.</span><button class="preview-info" id="preview-info">About preview <span data-icon="arrow-up-right"></span></button></div>
+      <main id="main" class="main" tabindex="-1"></main>
+    </div>
+  </div>
+  <div id="inspector-root"></div>
+  <div id="dialog-root"></div>
+  <div id="command-root"></div>
+  <div id="toast-root" class="toast-root" role="status" aria-live="polite"></div>
+</body>
+</html>

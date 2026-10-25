@@ -8,7 +8,8 @@ import re
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = ('README.md', 'AGENTS.md', 'WORKFLOW.md', 'web/README.md',
             'desktop/README.md', 'packages/ui/README.md', 'packages/api-client/README.md',
-            'docs/features/repository-bootstrap.md', 'contracts/product-reference.json')
+            'docs/features/repository-bootstrap.md', 'docs/features/desktop-control-plane.md',
+            'contracts/product-reference.json')
 EXCLUDED = {'.git', '.amr-local', '.temp', 'node_modules', 'dist', '__pycache__'}
 
 
