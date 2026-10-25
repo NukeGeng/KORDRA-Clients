@@ -28,8 +28,11 @@ Vite binds to `127.0.0.1:1420` and requires the port to be free. The app makes n
 Install the Rust stable toolchain, Tauri 2 prerequisites for macOS and the npm dependencies, then run:
 
 ```sh
+source ~/.cargo/env
 npm run tauri:dev
 ```
+
+If `xcode-select` points to Command Line Tools while Xcode is installed elsewhere, set `DEVELOPER_DIR` to that Xcode application's `Contents/Developer` directory for the command. Keep port 1420 free before running `tauri:dev`, because it starts Vite itself.
 
 The shell has no custom Rust commands or Product domain logic. The current Tauri bundle is disabled; `tauri:build` can compile the app binary but does not create an installer, signed package or production release bundle.
 
@@ -48,4 +51,4 @@ All records are synthetic fixtures in `src/fixtures/mockData.ts`. Approval, depl
 
 The browser suite uses Chromium and covers all nine routes, primary local workflows, keyboard navigation and responsive widths. CI installs Chromium with `npx playwright install --with-deps chromium`.
 
-Native Tauri launch/build was not available in the implementation environment: `npm run tauri -- info` reported that Rust/Cargo and Xcode.app are missing. Xcode Command Line Tools are installed. See the feature record for the full verification evidence and limits.
+On 2026-10-25, the native macOS build passed with Xcode 16.4 and Rust 1.99.1 after setting `DEVELOPER_DIR` to the installed Xcode application. The unbundled native binary started and remained running. Graphical window inspection was unavailable because macOS denied the terminal's Accessibility access; the browser preview was inspected separately. See the feature record for the exact evidence and limits.

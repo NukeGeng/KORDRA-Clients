@@ -38,7 +38,7 @@ The Rust layer only starts the Tauri window. The frontend uses no Tauri plugin o
 - Screen features: `desktop/src/features/`.
 - Clearly synthetic records and state transitions: `desktop/src/fixtures/mockData.ts`, `desktop/src/stores/demo.ts`.
 - Design tokens and responsive implementation: `desktop/src/styles/app.css`, migrated from `desktop/reference/kordra-desktop-prototype/styles.css`.
-- Native shell: `desktop/src-tauri/`.
+- Native shell: `desktop/src-tauri/`. Its app icon is generated from the repository's existing KORDRA logo at `website/theme/kordra/assets/images/logo-no-content.png`.
 - Product API adapter: intentionally absent. A future adapter requires an accepted Product contract and authorization decision.
 
 ## Setup and verification
@@ -56,7 +56,7 @@ npm run build
 npm audit --audit-level=moderate
 ```
 
-Vite uses `127.0.0.1:1420` with `strictPort`; confirm it is free before starting another local server. To open the Tauri development shell, install the Rust stable toolchain and current macOS Tauri prerequisites, then run `npm run tauri:dev`. The browser-only app does not require Rust.
+Vite uses `127.0.0.1:1420` with `strictPort`; confirm it is free before starting another local server. To open the Tauri development shell, install the Rust stable toolchain and current macOS Tauri prerequisites, then run `npm run tauri:dev`. If `xcode-select` points at Command Line Tools while Xcode is installed elsewhere, set `DEVELOPER_DIR` to that Xcode application's `Contents/Developer` directory for the command. The browser-only app does not require Rust.
 
 Focused tests in `desktop/tests/demo.store.test.ts` verify fixture isolation, filtering and sorting, draft creation bounds, approval eligibility, simulated deployment progression, rollback audit behavior and CSV escaping. `desktop/tests/app.shell.test.ts` covers nine-screen navigation, the single breadcrumb title, environment switching and the keyboard palette. `desktop/tests/browser/desktop.spec.ts` exercises the nine routes, environment/filter/inspector interactions, simulated release-to-rollback flows, CSV download, keyboard navigation and responsive layout at 1440, 1280, 1024 and 390 CSS pixels. The `desktop-quality` CI job runs typecheck, unit tests, Chromium browser tests, build and npm audit. These checks do not claim native runtime or Product integration validation.
 
@@ -65,8 +65,9 @@ Focused tests in `desktop/tests/demo.store.test.ts` verify fixture isolation, fi
 - Node 22.23.4: `npm run typecheck` passed; `npm test` passed (2 files, 8 tests); `npm run test:ui` passed (4 browser tests); `npm run build` passed; `npm audit --audit-level=moderate` reported 0 vulnerabilities.
 - The browser suite ran in local Chrome 156. A manual axe-core 4.14.0 scan reported no violations on the nine screens, inspector, release-draft dialog and closed/open mobile navigation. These manual accessibility scans are not a CI gate.
 - Clients repository tests passed (6 tests), `python3 tools/check_repository.py` reported 0 errors, and `git diff --check` passed. The checker explicitly covers repository links and the Product contract only; it is not application or browser validation.
-- `npm run tauri -- info` reported Rust/Cargo and Xcode.app unavailable; Xcode Command Line Tools are installed. Native Tauri launch/build remains unverified in this environment.
+- Initial `npm run tauri -- info` missed Xcode because `xcode-select` pointed to Command Line Tools. With `DEVELOPER_DIR=/Users/dangvyhao/Downloads/Xcode.app/Contents/Developer`, it detected Xcode 16.4; `xcodebuild -checkFirstLaunchStatus` and `xcrun --show-sdk-path` passed. Rustup installed the stable `aarch64-apple-darwin` toolchain, providing rustc/Cargo 1.99.1.
+- `npm run tauri -- build --no-bundle` passed with that `DEVELOPER_DIR` and Rust on `PATH`, after adding the missing app icon; it built `desktop/src-tauri/target/release/kordra-desktop`. The binary started and remained running as a macOS process. Direct window inspection was unavailable: macOS denied Accessibility access to `osascript`, and the terminal screenshot showed only the desktop wallpaper. The browser preview rendered at `http://127.0.0.1:1420/#/overview`; this does not establish visual parity in the native window.
 
 ## Limitations and acceptance status
 
-The preview is ready for human review as a prototype milestone. It makes no claim of production readiness, live telemetry, valid infrastructure connection, real approval or execution. Tauri native launch depends on a locally installed Rust toolchain; the current development environment should be checked before claiming that milestone. Packaging, signing, persistence, localization and live backend integration remain out of scope.
+The preview is ready for human review as a prototype milestone. It makes no claim of production readiness, live telemetry, valid infrastructure connection, real approval or execution. Native compilation and process launch are verified on this Mac; visual inspection of the native window remains unverified. Packaging, signing, persistence, localization and live backend integration remain out of scope.
