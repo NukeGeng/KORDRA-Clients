@@ -3,7 +3,7 @@ id: FEAT-CLIENTS-DESKTOP-001
 feature_id: FEAT-CLIENTS-DESKTOP-001
 status: implemented-preview
 owner: clients-desktop
-last_reviewed: 2026-10-24
+last_reviewed: 2026-10-25
 ---
 
 # FEAT-CLIENTS-DESKTOP-001 — Desktop Control Plane preview
@@ -60,7 +60,7 @@ Vite uses `127.0.0.1:1420` with `strictPort`; confirm it is free before starting
 
 Focused tests in `desktop/tests/demo.store.test.ts` verify fixture isolation, filtering and sorting, draft creation bounds, approval eligibility, simulated deployment progression, rollback audit behavior and CSV escaping. `desktop/tests/app.shell.test.ts` covers nine-screen navigation, the single breadcrumb title, environment switching and the keyboard palette. `desktop/tests/browser/desktop.spec.ts` exercises the nine routes, environment/filter/inspector interactions, simulated release-to-rollback flows, CSV download, keyboard navigation and responsive layout at 1440, 1280, 1024 and 390 CSS pixels. The `desktop-quality` CI job runs typecheck, unit tests, Chromium browser tests, build and npm audit. These checks do not claim native runtime or Product integration validation.
 
-## Verification evidence (2026-10-24)
+## Verification evidence (2026-10-25)
 
 - Node 22.23.4: `npm run typecheck` passed; `npm test` passed (2 files, 8 tests); `npm run test:ui` passed (4 browser tests); `npm run build` passed; `npm audit --audit-level=moderate` reported 0 vulnerabilities.
 - The browser suite ran in local Chrome 156. A manual axe-core 4.14.0 scan reported no violations on the nine screens, inspector, release-draft dialog and closed/open mobile navigation. These manual accessibility scans are not a CI gate.

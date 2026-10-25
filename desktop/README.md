@@ -2,7 +2,7 @@
 id: FEAT-CLIENTS-DESKTOP-001
 status: implemented-preview
 owner: clients-desktop
-last_reviewed: 2026-10-24
+last_reviewed: 2026-10-25
 ---
 
 # KORDRA Desktop local control plane preview
