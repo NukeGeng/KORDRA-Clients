@@ -27,6 +27,25 @@ test('environment switching, search, status filters and the inspector work toget
 
   await page.getByRole('combobox', { name: 'Filter records by status' }).selectOption('All')
   await page.getByRole('searchbox', { name: 'Search resources' }).fill('')
+  await page.getByRole('tab', { name: /Nodes/ }).click()
+  await expect(page.getByRole('columnheader', { name: /Role/ })).toBeVisible()
+  await page.getByRole('button', { name: 'Inspect worker-east-01' }).click()
+  await expect(page.getByRole('dialog', { name: 'worker-east-01' })).toContainText('node / sample record')
+  await page.keyboard.press('Escape')
+
+  await page.getByRole('tab', { name: 'Services' }).click()
+  await expect(page.getByRole('columnheader', { name: 'Type' })).toBeVisible()
+  await page.getByRole('button', { name: 'Inspect checkout-service' }).click()
+  await expect(page.getByRole('dialog', { name: 'checkout-service' })).toContainText('service / sample record')
+  await page.keyboard.press('Escape')
+
+  await page.getByRole('tab', { name: /Storage \(PVC\)/ }).click()
+  await expect(page.getByRole('columnheader', { name: 'Storage class' })).toBeVisible()
+  await page.getByRole('button', { name: 'Inspect postgres-data-01' }).click()
+  await expect(page.getByRole('dialog', { name: 'postgres-data-01' })).toContainText('storage / sample record')
+  await page.keyboard.press('Escape')
+
+  await page.getByRole('tab', { name: /Workloads/ }).click()
   await page.getByRole('combobox', { name: 'Active environment' }).selectOption('Development')
   await expect(page.locator('tbody tr')).toHaveCount(2)
 })

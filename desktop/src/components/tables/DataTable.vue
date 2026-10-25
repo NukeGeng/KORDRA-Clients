@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useDemoStore } from '../../stores/demo'
 import type { DemoRow } from '../../fixtures/mockData'
 import type { TableKind } from './tableConfigs'
@@ -9,8 +10,8 @@ import Icon from '../Icon.vue'
 
 const props = defineProps<{ kind: TableKind; rows: DemoRow[] }>()
 const store = useDemoStore()
-const config = tableConfigs[props.kind]
-function inspect(id: string) { store.openInspector(config.entity, id) }
+const config = computed(() => tableConfigs[props.kind])
+function inspect(id: string) { store.openInspector(config.value.entity, id) }
 function isStatus(key: string) { return key === 'status' || key === 'result' }
 function isEnvironment(key: string) { return key === 'environment' }
 function environmentClass(value: string) { return value === 'Production' ? 'prod' : value === 'Staging' ? 'staging' : 'dev' }
